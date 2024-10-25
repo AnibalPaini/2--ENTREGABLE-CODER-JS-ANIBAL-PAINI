@@ -40,6 +40,7 @@ header nav ul {
   display: flex;
   gap: 1rem;
 }
+
 header nav ul li {
   display: inline;
 }
@@ -56,6 +57,11 @@ header nav ul li a:hover {
   background-color: #11101b;
   margin-right: 5px;
 }
+
+header .carrito img{
+  width: 50px;
+}
+
 header .header__menu {
   display: none;
   cursor: pointer;
