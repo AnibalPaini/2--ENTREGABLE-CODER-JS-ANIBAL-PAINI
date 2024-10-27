@@ -20,24 +20,31 @@
         <div class="logo">
             <a href="#"><img src="./img/logo(2).png" alt="Logo de Materos"></a>
         </div>
-        <nav class="nav-bar">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="./html/productos.html">Productos</a></li>
-                <li><a href="./html/contacto.html">Productos</a></li>
-            </ul>
-        </nav>
-        <div class="header__menu">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        <div class="carrito">
-            <img src="./img/carrito.png" alt="Carrito">
+        <div class="contenedor-nav">
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#Contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="carrito abrir">
+                <img src="./img/carrito.png" alt="Carrito">
+            </div>
+            <div class="header__menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
         </div>
     </header>
     
     <main>
+        <section id="carrito-contenedor" class="oculto">
+            <div id="carrito">
+
+            </div>
+        </section>
         <h1>Materos</h1>
         <section class="section__inicio">
             <div class="imagen__inicio">
@@ -52,10 +59,12 @@
             
         </section>
         <section class="contenedor-productos" id="contenedor-productos">
-            <h2>Productos</h2>
+            <h2 id="productos">Productos</h2>
             
             </div>
         </section>
+
+
     </main>
 
     <footer>

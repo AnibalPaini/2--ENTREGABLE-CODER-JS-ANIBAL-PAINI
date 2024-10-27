@@ -7,7 +7,7 @@
 }
 
 main {
-  padding: 2rem;
+  padding: 12rem 2rem 2rem 2rem;
   text-align: center;
 }
 
@@ -24,6 +24,8 @@ h1 {
 /*HEADER*/
 header {
   display: flex;
+  position: fixed;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   background-color: #f0f0f0;
@@ -33,7 +35,15 @@ header {
 header .logo img {
   width: 120px;
 }
-header nav ul {
+
+header .contenedor-nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+header .contenedor-nav nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -41,10 +51,10 @@ header nav ul {
   gap: 1rem;
 }
 
-header nav ul li {
+header .contenedor-nav nav ul li {
   display: inline;
 }
-header nav ul li a {
+header .contenedor-nav nav ul li a {
   color: rgb(133, 133, 133);
   text-decoration: none;
   font-weight: bold;
@@ -52,33 +62,34 @@ header nav ul li a {
   padding: 10px 15px;
   border-radius: 50px;
 }
-header nav ul li a:hover {
+header .contenedor-nav nav ul li a:hover {
   color: #fefefe;
   background-color: #11101b;
   margin-right: 5px;
 }
 
-header .carrito img{
-  width: 50px;
+header .contenedor-nav .carrito img{
+  width: 40px;
+  cursor: pointer;
 }
 
-header .header__menu {
+header .contenedor-nav .header__menu {
   display: none;
   cursor: pointer;
 }
-header .header__menu .line {
+header .contenedor-nav .header__menu .line {
   transition: all 0.5s;
 }
-header .header__menu.active .line:nth-child(1) {
+header .contenedor-nav .header__menu.active .line:nth-child(1) {
   position: absolute;
   top: 74px;
   transform: rotate(45deg);
 }
-header .header__menu.active .line:nth-child(2) {
+header .contenedor-nav .header__menu.active .line:nth-child(2) {
   transition: 0s;
   opacity: 0;
 }
-header .header__menu.active .line:nth-child(3) {
+header .contenedor-nav .header__menu.active .line:nth-child(3) {
   position: absolute;
   top: 74px;
   transform: rotate(135deg);
@@ -186,55 +197,6 @@ footer .iconos a:hover {
 }
 
 /*FIN INDEX INICIO*/
-.section__quehacemos {
-  text-align: left;
-  padding: 2rem 5rem;
-  background-color: #dadada;
-  border-radius: 10px;
-  margin: 11rem auto 8rem auto;
-  max-width: 1100px;
-  align-items: center;
-}
-.section__quehacemos h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.section__quehacemos p {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-.section__quehacemos ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-}
-.section__quehacemos ul li {
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-}
-
-.section__preguntas {
-  text-align: left;
-  padding: 2rem 5rem;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  margin: 2rem auto 4rem auto;
-  max-width: 1000px;
-}
-.section__preguntas .pregunta {
-  margin-bottom: 1.5rem;
-}
-.section__preguntas h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-.section__preguntas p {
-  font-size: 1.2rem;
-}
-.section__preguntas ol {
-  margin: 5px 0 5px 17px;
-  font-size: 1.2rem;
-}
-
 .buscar {
   margin: 10px 0 20px 0;
   display: flex;
@@ -264,19 +226,6 @@ footer .iconos a:hover {
 
 .button__productos:hover {
   background-color: #40009b;
-}
-
-.grid__form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
-  margin: 0 auto 5rem auto;
-  gap: 2rem;
 }
 
 /*Query*/
@@ -318,17 +267,17 @@ footer .iconos a:hover {
   }
 }
 @media (max-width: 900px) {
-  header .header__menu {
+  header .contenedor-nav .header__menu {
     display: block;
   }
-  header .header__menu .line {
+  header .contenedor-nav .header__menu .line {
     width: 30px;
     height: 3px;
     background-color: black;
     margin: 6px 0;
     border-radius: 5px;
   }
-  header .nav-bar {
+  header .contenedor-nav .nav-bar {
     height: 0;
     position: absolute;
     top: 156px;
@@ -338,7 +287,7 @@ footer .iconos a:hover {
     transition: 0.2s;
     overflow: hidden;
   }
-  header .nav-bar ul {
+  header .contenedor-nav .nav-bar ul {
     display: block;
     width: fit-content;
     margin: 80px auto 0 auto;
@@ -346,14 +295,14 @@ footer .iconos a:hover {
     transition: 0.5s;
     opacity: 0;
   }
-  header .nav-bar ul li {
+  header .contenedor-nav .nav-bar ul li {
     margin-bottom: 12px;
     flex-direction: column;
   }
-  header .nav-bar.active {
+  header .contenedor-nav .nav-bar.active {
     height: 100vh;
   }
-  header .nav-bar.active ul {
+  header .contenedor-nav .nav-bar.active ul {
     opacity: 1;
     display: flex;
     flex-direction: column;
@@ -392,4 +341,58 @@ footer .iconos a:hover {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+/*CARRITO*/
+#carrito {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-top: 1rem;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+main .oculto{
+  display: none;
+}
+
+.producto-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.producto-carrito img{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.producto-carrito button{
+  background-color: red;
+  border-radius: 5px;
+  width: 20px;
+}
+
+.btn-vaciar{
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.btn-vaciar button{
+  width: 60%;
+  height: 20px;
+  border-radius: 5px;
+  background-color: red;
+}
+
+
+.total {
+  margin-top: 1rem;
+  font-weight: bold;
+}
