@@ -11,62 +11,62 @@ const productos = [ //CREO LA LISTA DE LOS PRODUCTOS QUE VOY A MOSTRAR
     {
         nombre: "Mate Calabaza Tradicional",
         precio: 1200,
-        imagen: "../img/destacado1.jpeg"
+        imagen: "./img/destacado1.jpeg"
     },
     {
         nombre: "Yerba Mate Orgánica",
         precio: 800,
-        imagen: "../img/destacado2.jpg"
+        imagen: "./img/destacado2.jpg"
     },
     {
         nombre: "Bombilla Acero Inoxidable",
         precio: 450,
-        imagen: "../img/destacado3.jpg"
+        imagen: "./img/destacado3.jpg"
     },
     {
         nombre: "Termo Acero 1 Litro",
         precio: 3000,
-        imagen: "../img/destacado4.jpg"
+        imagen: "./img/destacado4.jpg"
     },
     {
         nombre: "Set Matero Completo",
         precio: 5000,
-        imagen: "../img/destacado5.jpg"
+        imagen: "./img/destacado5.jpg"
     },
     {
         nombre: "Porta Mate y Bombilla",
         precio: 1500,
-        imagen: "../img/destacado6.jpg"
+        imagen: "./img/destacado6.jpg"
     },
     {
         nombre: "Yerba Mate Tradicional",
         precio: 700,
-        imagen: "../img/yerba1.jpg"
+        imagen: "./img/yerba1.jpg"
     },
     {
         nombre: "Yerba Mate Suave",
         precio: 750,
-        imagen: "../img/yerba2.jpeg"
+        imagen: "./img/yerba2.jpeg"
     },
     {
         nombre: "Yerba Mate con Hierbas",
         precio: 850,
-        imagen: "../img/yerba3.jpeg"
+        imagen: "./img/yerba3.jpeg"
     },
     {
         nombre: "Bombilla Dorada Clásica",
         precio: 400,
-        imagen: "../img/bombilla1.jpeg"
+        imagen: "./img/bombilla1.jpeg"
     },
     {
         nombre: "Bombilla de Aluminio",
         precio: 350,
-        imagen: "../img/bombilla2.jpeg"
+        imagen: "./img/bombilla2.jpeg"
     },
     {
         nombre: "Bombilla Plateada",
         precio: 500,
-        imagen: "../img/bombilla4.jpeg"
+        imagen: "./img/bombilla4.jpeg"
     },
     {
         nombre: "Termo con Funda",
@@ -89,9 +89,9 @@ const contenedorProducto = document.getElementById('contenedor-productos'); // D
 const gridProducto = document.createElement('div');
 gridProducto.classList.add('productos'); // DIV CON GRID 
 
-let carrito = []; // Lista para guardar productos
+let carrito = []; // LISTA PARA GUARDAR LOS PRODUCTOS
 
-// Cargar el carrito desde localStorage al inicio
+// CARGAMOS EL CARRITO DESDE EL LOCALSTORAGE CUANDO SE RECARGA LA PAG
 function cargarCarritoDesdeLocalStorage() {
     const carritoGuardado = localStorage.getItem('carrito');
     if (carritoGuardado) {
@@ -104,9 +104,9 @@ function agregarAlCarrito(producto) { // FUNCIONALIDAD AGREGAR PRODUCTO AL CARRI
     const itemEnCarrito = carrito.find(item => item.nombre === producto.nombre);
     
     if (itemEnCarrito) {
-        itemEnCarrito.cantidad++; // Incrementa la cantidad si ya está en el carrito
+        itemEnCarrito.cantidad++; // SI YA ESTA AUMENTA LA CANTIDAD
     } else {
-        carrito.push({ ...producto, cantidad: 1 }); // Agrega nuevo producto
+        carrito.push({ ...producto, cantidad: 1 }); // SINO AGREGA UN NUEVO PRODUCTO
     }
 
     const carritoContenedor = document.getElementById('carrito-contenedor'); // SE ABRE EL CARRITO CADA VEZ QUE AGREGAMOS UN PRODUCTO
@@ -115,33 +115,35 @@ function agregarAlCarrito(producto) { // FUNCIONALIDAD AGREGAR PRODUCTO AL CARRI
     actualizarCarrito();
 }
 
-function actualizarCarrito() {
+function actualizarCarrito() { //ACTUALIZAMOS EL CARRITO
     const contenedorCarrito = document.getElementById('carrito');
     contenedorCarrito.innerHTML = `<h2>Carrito</h2>`; 
     
     carrito.forEach((producto, index) => {
         const div = document.createElement('div');
         div.classList.add('producto-carrito');
-        
-        div.innerHTML = `
-            <img src="${producto.imagen}">
+
+        //CREAMOS EL HTML DE LOS PRODUCTOS DENTRO DEL CARRITO
+        div.innerHTML = ` 
+            <img src="${producto.imagen}"> 
             <p>${producto.nombre} (x${producto.cantidad})</p>
-            <p>$${producto.precio * producto.cantidad}</p>
+            <p>$${producto.precio * producto.cantidad}</p> 
             <button class="eliminar-producto">-</button>
         `;
+        //CREAMOS EL BOTON ELIMINAR PRODUCTO
         const botonEliminar = div.querySelector('.eliminar-producto');
         botonEliminar.addEventListener('click', () => eliminarProducto(index));
         contenedorCarrito.appendChild(div);
     });
 
-    // Agregar el precio total
+    // CREAMOS Y MOSTRAMOS EL TOTAL DE LOS PRODUCTOS
     const total = carrito.reduce((acu, item) => acu + item.precio * item.cantidad, 0);
     const totalDiv = document.createElement('div');
     totalDiv.classList.add('total');
     totalDiv.innerHTML = `<h4>Total: $${total}</h4>`;
     contenedorCarrito.appendChild(totalDiv);
 
-    // Botón para vaciar el carrito
+    // CREAMOS EL BOTON VACIAR CARRITO
     const divBtnVaciar= document.createElement('div');
     divBtnVaciar.classList.add("btn-vaciar")
     divBtnVaciar.innerHTML=`<button>Vaciar Carrito</button>`
@@ -151,7 +153,7 @@ function actualizarCarrito() {
     guardarCarritoEnLocalStorage(); 
 }
 
-function mostrarProductos() {
+function mostrarProductos() { //MOSTRAMOS LOS PRODUCTOS EN EL HTML
     productos.forEach(producto => {
         const divProducto = document.createElement('div');
         divProducto.classList.add('producto');
@@ -163,24 +165,23 @@ function mostrarProductos() {
             <button>Agregar al carrito</button>
         `;
         
-        divProducto.querySelector('button').addEventListener('click', () => agregarAlCarrito(producto));
+        divProducto.querySelector('button').addEventListener('click', () => agregarAlCarrito(producto)); //EVENTO DE AÑADIR PRODUCTO AL CARRITO
         gridProducto.appendChild(divProducto);
     });
     contenedorProducto.appendChild(gridProducto);
 }
 
-function eliminarProducto(index) { // ELIMINAMOS LOS PRODUCTOS CON LA X
-    // Reducir la cantidad del producto
+function eliminarProducto(index) { //ELIMINAMOS LOS PRODUCTOS CON EL -, REDUCE LA CANTIDAD Y CUANDO LLEGA A 0 SE ELIMINA.
     carrito[index].cantidad--; 
 
     if (carrito[index].cantidad <= 0) {
-        carrito.splice(index, 1); // Eliminar el producto si la cantidad es cero
+        carrito.splice(index, 1);
     }
 
-    actualizarCarrito(); // Actualizar el carrito después de la eliminación
+    actualizarCarrito(); 
 }
 
-function vaciarCarrito() {
+function vaciarCarrito() { //VACIAMOS LA LISTA DEL CARRITO PARA CUNADO EL BOTON VACIAR CARRITO SEA ACTIVADO
     carrito = []; 
     actualizarCarrito(); 
     guardarCarritoEnLocalStorage(); 
@@ -194,17 +195,17 @@ abrirCarrito.addEventListener("click", function() {
 
 // LOCAL STORAGE
 function guardarCarritoEnLocalStorage() {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+    localStorage.setItem('carrito', JSON.stringify(carrito)); //CONVERTIMOS EN STRING EL CARRITO Y LO GUARDAMOS EN LOCAL STORAGE
 }
 
-// Al cargar la página, recuperar el carrito del localStorage
+// CUANDO CARGA LA PAG SE RECUPERA EL CARRITO DEL LOCALSTORAGE
 document.addEventListener('DOMContentLoaded', () => {
     cargarCarritoDesdeLocalStorage();
 });
 
 
 
-mostrarProductos(); // Mostrar productos en la página
+mostrarProductos(); // MOSTRAR PRODUCTOS
 
 
 
