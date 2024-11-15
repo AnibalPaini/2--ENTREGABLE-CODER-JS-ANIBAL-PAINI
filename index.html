@@ -7,6 +7,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/v4-shims.js"></script> 
     <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/fontawesome.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./style.css">
     <!-- META TAGS -->
     <meta name="description" content="Descubre los mejores mates, yerba y accesorios en Materos. Tienda online con productos de calidad para los amantes del mate. Envíos a todo el país.">
@@ -15,7 +16,7 @@
     <title>Materos - Tu Tienda Online de Mates, Yerba y Accesorios</title>
 
 </head>
-<body>
+<body id="body">
     <header>   
         <div class="logo">
             <a href="#"><img src="./img/logo(2).png" alt="Logo de Materos"></a>
@@ -30,6 +31,7 @@
             </nav>
             <div class="carrito abrir">
                 <img src="./img/carrito.png" alt="Carrito">
+                <span id="cantidad-carrito"></span>
             </div>
             <div class="header__menu">
                 <div class="line"></div>
