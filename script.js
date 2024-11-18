@@ -51,20 +51,27 @@ function agregarAlCarrito(producto) { // FUNCIONALIDAD AGREGAR PRODUCTO AL CARRI
         carrito.push({ ...producto, cantidad: 1 }); // SINO AGREGA UN NUEVO PRODUCTO
     }
     Swal.fire({
-        position: "bottom-start",
-        icon: "info",
-        title: "Se agrego al carrito",
+        customClass: {
+            popup: 'alerta-position'
+        },
+        html:`
+            <div class="alerta-producto">
+                <img src="${producto.imagen}" alt="${producto.nombre}" class="alerta-img">
+                <div class="alerta-texto">
+                    <span>${producto.nombre}</span>
+                    <span>Se agrego al carrito! </span>
+                </div>
+            </div>
+        `,
+        background:"#F2F3F4",
         showConfirmButton: false,
         timer: 1500,
         backdrop:false,
-        width:250,
-        customClass: {
-            title: 'sweet-titulo',  
-            icon: 'sweet-icon'  
-        }
+        width:400,
+
     });
     const carritoContenedor = document.getElementById('carrito-contenedor'); // SE ABRE EL CARRITO CADA VEZ QUE AGREGAMOS UN PRODUCTO
-    carritoContenedor.classList.remove('oculto');
+    //carritoContenedor.classList.remove('oculto');
 
     actualizarCarrito();
 }

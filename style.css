@@ -467,10 +467,27 @@ main .oculto{
   background-color: #bebcbc;
 }
 
-.sweet-titulo {
-  font-size: 20px;
-  font-weight: bold;
+.alerta-producto {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  gap: 20px;
 }
-.sweet-icon{
-  font-size: 10px;
+
+.alerta-img{
+  width: 70px; 
+  height: 70px; 
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.alerta-texto{
+  display: flex;
+  flex-direction: column;
+}
+
+.alerta-position{
+  position: fixed;
+  top: 120px;
+  right: 20px; 
 }
