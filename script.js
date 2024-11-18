@@ -9,6 +9,7 @@ hamburguesa.onclick=function(){
 const cantidadCarrito=document.getElementById("cantidad-carrito");
 const contenedorProducto = document.getElementById('contenedor-productos'); // DIV CONTENEDOR DE LOS PRODUCTOS
 const gridProducto = document.createElement('div');
+const carritoContenedor = document.getElementById('carrito-contenedor');
 gridProducto.classList.add('productos'); // DIV CON GRID 
 
 let carrito = []; // LISTA PARA GUARDAR LOS PRODUCTOS
@@ -50,28 +51,29 @@ function agregarAlCarrito(producto) { // FUNCIONALIDAD AGREGAR PRODUCTO AL CARRI
     } else {
         carrito.push({ ...producto, cantidad: 1 }); // SINO AGREGA UN NUEVO PRODUCTO
     }
-    Swal.fire({
-        customClass: {
-            popup: 'alerta-position'
-        },
-        html:`
-            <div class="alerta-producto">
-                <img src="${producto.imagen}" alt="${producto.nombre}" class="alerta-img">
-                <div class="alerta-texto">
-                    <span>${producto.nombre}</span>
-                    <span>Se agrego al carrito! </span>
-                </div>
-            </div>
-        `,
-        background:"#F2F3F4",
-        showConfirmButton: false,
-        timer: 1500,
-        backdrop:false,
-        width:400,
 
-    });
-    const carritoContenedor = document.getElementById('carrito-contenedor'); // SE ABRE EL CARRITO CADA VEZ QUE AGREGAMOS UN PRODUCTO
-    //carritoContenedor.classList.remove('oculto');
+    if (carritoContenedor.classList.contains('oculto')) {
+        Swal.fire({
+            customClass: {
+                popup: 'alerta-position'
+            },
+            html:`
+                <div class="alerta-producto">
+                    <img src="${producto.imagen}" alt="${producto.nombre}" class="alerta-img">
+                    <div class="alerta-texto">
+                        <span>${producto.nombre}</span>
+                        <span>Se agrego al carrito! </span>
+                    </div>
+                </div>
+            `,
+            background:"#F2F3F4",
+            showConfirmButton: false,
+            timer: 1500,
+            backdrop:false,
+            width:400,
+    
+        });
+    }
 
     actualizarCarrito();
 }
@@ -89,7 +91,6 @@ function actualizarCarrito() { //ACTUALIZAMOS EL CARRITO
     divHeaderCarrito.appendChild(cerrarCarrito);
 
     cerrarCarrito.addEventListener("click",()=>{
-        const carritoContenedor = document.getElementById('carrito-contenedor');
         carritoContenedor.classList.toggle('oculto'); 
     });
 
@@ -201,7 +202,6 @@ function vaciarCarrito() { //VACIAMOS LA LISTA DEL CARRITO PARA CUNADO EL BOTON 
 
 const abrirCarrito = document.querySelector(".abrir"); // FUNCIONALIDAD PARA ABRIR
 abrirCarrito.addEventListener("click", function() {
-    const carritoContenedor = document.getElementById('carrito-contenedor');
     carritoContenedor.classList.toggle('oculto'); 
 });
 

@@ -374,6 +374,15 @@ footer .iconos a:hover {
   border: none;
   cursor: pointer;
   margin-bottom: 10px;
+  transition: .2s;
+  width: 40px;
+}
+
+.headerCarrito .cerrar-carrito:hover{
+  color: #fefefe;
+  background-color: rgb(29, 29, 29);
+  border-radius: 50%;
+
 }
 
 .headerCarrito .titulo-carrito{
@@ -396,7 +405,7 @@ main .oculto{
 .producto-carrito .producto-descripcion{
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 800px;
   align-items: flex-start;
 }
 
